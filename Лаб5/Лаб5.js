@@ -2,7 +2,7 @@ function debounce(callback, delay) {
     let timerId;
 
     return function (...args) {
-        timerId = clearTimeout(timerId);
+       clearTimeout(timerId);
         timerId = setTimeout(() => {
             callback(...args);
         }, delay);
@@ -113,8 +113,8 @@ const users = [
 
 
 function* createBatches(items, batchSize) {
-    if (!Number.isInteger(batchSize) || batchSize <= 0) {
-        console.log("batchSize должен быть положительным целым числом;");
+   if (!Number.isInteger(batchSize) || batchSize <= 0) {
+    throw new Error('batchSize должен быть положительным целым числом');   // ✓
     }
     for (let i = 0; i < items.length; i += batchSize) {
         yield items.slice(i, i + batchSize);
@@ -136,8 +136,11 @@ function createRegistrationHandler(eventId,callback){
 }
 
 
-function registerForEvent(eventId) {
-  console.log(`Регистрация на мероприятие ${eventId}`);
+function registerForEvent(eventId, event) {
+    console.log(`Регистрация на мероприятие ${eventId}`);
+    if (event) {
+        console.log('Тип события:', event.type);
+    }
 }
 
 const handleFirstEvent = createRegistrationHandler(
