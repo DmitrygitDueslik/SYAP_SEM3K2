@@ -1,3 +1,4 @@
+ 
 function debounce(callback, delay) {
     let timerId;
 
@@ -15,7 +16,7 @@ function searchEvents(query) {
 }
 
 
-const searchInput = document.querySelector('#search');
+const searchInput = document.getElementById('search');
 
 const handleSearch = debounce(searchEvents, 500);
 
@@ -69,7 +70,19 @@ function filterBy(property) {
         }
     }
 }
-
+let el1=1;
+let el2=2;
+let el3=3;
+function Car(first){
+    return (second)=>{
+        return (third)=>{
+            return first+second+third;
+        }
+    }
+}
+const first=Car(el1);
+const second=first(el2);
+console.log(second(el3));
 
 const events = [
     {
@@ -153,10 +166,8 @@ const handleSecondEvent = createRegistrationHandler(
   registerForEvent
 );
 handleFirstEvent();
-// 'Регистрация на мероприятие 101'
 
 handleSecondEvent();
-// 'Регистрация на мероприятие 205'
 const button = document.querySelector('#register-button');
 
 button.addEventListener(
